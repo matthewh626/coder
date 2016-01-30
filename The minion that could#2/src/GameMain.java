@@ -2,18 +2,19 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.LinkedList;
 import java.util.Properties;
 
 import javax.swing.JFrame;
-public class Main {
+public class GameMain implements Runnable {
 	File configFile = new File("config.properties");
-	Main Main = new Main();
 	ProAi proAi = new ProAi();
+	LinkedList entites = new LinkedList();
 	public static void main (String args[]){
-	
+	GameMain Main = new GameMain();
 }
 
-	public Main(){
+	public GameMain(){
     JFrame frame = new JFrame();
     frame.setTitle("The Minion That Could");
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -21,8 +22,7 @@ public class Main {
     frame.setSize(800, 550);
     frame.setResizable(false);
     frame.setVisible(true);
-    writer("test","test");
-    System.out.println(reader("test"));
+	entites.addLast(proAi);
 	}
 public String reader (String targit){
 	String value = "";
@@ -45,5 +45,11 @@ public void writer (String targit, String value){
 	    writer.close();
 	} catch (IOException ex) {
 	}
+}
+
+@Override
+public void run() {
+	
+	
 }
 }
